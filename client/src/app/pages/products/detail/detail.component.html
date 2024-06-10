@@ -1,0 +1,24 @@
+<p>Product Detail</p>
+@if(product) {
+<div>
+  <h2>{{ product.title }}</h2>
+  <img [src]="product.image" width="100px" />
+  <p>{{ product.description }}</p>
+  <countdown [config]="config" />
+  <form [formGroup]="bidForm" (ngSubmit)="handleSubmitBid()">
+    <input type="number" formControlName="price" />
+    <button type="submit">Bid</button>
+  </form>
+  <table>
+    <tr>
+      <th>Bid ID</th>
+    </tr>
+
+    @for (bid of product.bids; track bid._id) {
+    <tr>
+      <td>{{ bid._id }}</td>
+    </tr>
+    }
+  </table>
+</div>
+}
